@@ -31,6 +31,14 @@
 //QString GlobalFileName;
 QString GlobalFileName;
 
+
+# define utf8(str) ConvertToUTF8(L##str)
+const char * ConvertToUTF8(const wchar_t * pStr) {
+     static char szBuf[1024];
+     WideCharToMultiByte(CP_UTF8, 0, pStr, -1, szBuf, sizeof(szBuf), NULL, NULL);
+     return szBuf;
+ }
+
 Form1::Form1(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form1)
@@ -39,8 +47,8 @@ Form1::Form1(QWidget *parent) :
     //File Data variable
     QString fileData;
     //setup widgets
-    ui->cmbcodec->addItem("Windows Arabic - نا سالم");
-    ui->cmbcodec->addItem("UTF-8 - سالم");
+    ui->cmbcodec->addItem(utf8("Windows Arabic - نا سالم"));
+    ui->cmbcodec->addItem(utf8("UTF-8 - سالم"));
     //set drop on textbox -> false
     ui->textEdit->setAcceptDrops(false);
     ui->btnAbout->setIcon(QIcon::fromTheme("help-about"));
