@@ -26,7 +26,6 @@ SOURCES += \
     main.cpp \
     about.cpp \
     form1.cpp \
-    main.cpp
 
 HEADERS += \
     about.h \
