@@ -3,7 +3,9 @@ set PATH=%QTDIR%\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Communi
 call qtenv2
 call vcvarsall.bat x86_amd64
 cd %~dp0
-qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
-jom.exe
-qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=release" "CONFIG+=qml_release"
-jom.exe
+qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" 
+jom.exe -static
+windeployqt --qmldir . ./debug
+qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=release" "CONFIG+=qml_release" 
+jom.exe -static
+windeployqt --qmldir . ./release
