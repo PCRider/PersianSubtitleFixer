@@ -1,4 +1,6 @@
 # PersianSubtitleFixer
+[![Build status](https://ci.appveyor.com/api/projects/status/2s25vyr9y2bm41k9?svg=true)](https://ci.appveyor.com/project/PCRider/persiansubtitlefixer)
+
 <h4> Change subtitle encode from Windows Arabic to UTF-8 </h4> مشکل زیرنویس فارسی و حروف ناخوانا
 <br>
 <h5> Version 0.3 TP1 </h5>
