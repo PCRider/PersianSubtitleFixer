@@ -1,0 +1,22 @@
+branches:
+  only:
+    - master
+
+install:
+  - set QTDIR=C:\Qt\5.11.1\mingw53_32
+  - set PATH=%QTDIR%\bin;C:\Qt\Tools\mingw530_32\bin;C:\Qt\Tools\QtCreator\bin;%PATH%
+build_script:
+  - qmake PersianSubtitleFixer.pro
+  - mingw32-make
+
+after_build:
+  - windeployqt release/PersianSubtitleFixer.exe --release --no-translations
+  - rm release/*.o
+  - rm release/*.cpp
+  - rm release/*.h
+  - tree
+
+artifacts:
+  - path: release
+    type: zip
+    name: PersianSubtitleFixer
