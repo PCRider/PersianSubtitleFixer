@@ -4,4 +4,5 @@ del .qmake.stash
 del Makefile
 del Makefile.Release
 del Makefile.Debug
+del PersianSubtitleFixer.pro.user
 del ui_*

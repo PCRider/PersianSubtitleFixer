@@ -1,11 +1,11 @@
-set QTDIR=C:\Qt\5.11.1\winrt_x64_msvc2017
-set PATH=%QTDIR%\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build;C:\Qt\Tools\QtCreator\bin;%PATH%
-call qtenv2
-call vcvarsall.bat x86_amd64
+set QTDIR=C:\Qt\5.11.1\mingw53_32
+set PATH=%QTDIR%\bin;C:\Qt\Tools\mingw530_32\bin;C:\Qt\Tools\QtCreator\bin;%PATH%
 cd %~dp0
-qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" 
-jom.exe -static
-windeployqt --qmldir . ./debug
-qmake.exe PersianSubtitleFixer.pro -spec win32-msvc "CONFIG+=release" "CONFIG+=qml_release" 
-jom.exe -static
-windeployqt --qmldir . ./release
+
+qmake.exe PersianSubtitleFixer.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
+mingw32-make.exe 
+windeployqt --qmldir . ./release/PersianSubtitleFixer.exe
+
+qmake.exe PersianSubtitleFixer.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
+mingw32-make.exe 
+windeployqt --qmldir . ./debug/PersianSubtitleFixer.exe
